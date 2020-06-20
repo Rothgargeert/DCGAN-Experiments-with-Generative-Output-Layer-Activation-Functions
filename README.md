@@ -43,4 +43,38 @@ The specific dataset for this experiment I used is the Modified National Institu
 Siddique et al (2019) experimented on the MNIST testing which six different types of cases with different combinations of hidden layers. They found that of all the cases, the one that had the highest accuracy rate of 99.21%, used 15 epochs, 100 batches, with a structure including: Conv1, pool1, Conv2, pool2 with 2 dropouts. Chen et al (2018) tested four different neural network models on the MNIST dataset. These included: CNN, ResNet, DenseNet, and Capsnet (p.1). They found that Capsnet performed the best overall. The Capsnet architecture includes: 1 convolutional layer (256, 9x9 convolution kernels, stride of 1, and ReLU activation), PrimaryCaps(32 capsules), output (6632 eight-dimensional vector), and DigitCaps(10 digital capsules which represents the prediction of a number) (p.3). Harmon and Klabjan (2017) use MNIST to examine which activation ensembles work best in specific types of neural networks.
 
 ### Why Deep Learning Rather than Classical Techniques
-According to Mahony et al (2019), deep learning (DL) is effective for 
+According to Mahony et al (2019), deep learning (DL) is effective for difficult image processing problems such as image [colourization], classification, segmentation and detection. Traditional computer vision (CV) techniques are best for: robotics, augmented reality, automatic panorama stitching, virtual reality, and 3D modeling. Thus, DL is the best technique for the intended experiments here concerning the MNIST dataset and the effectiveness of DCGAN which focuses specifically on image classification.
+
+### Experimental Findings
+When I ran the code using the tahn function in the generative output layer, the generator/discriminator results were easy to read, realistically created images that resembled numbers that the DCGAN learned from the MNIST dataset. When I ran the ELU and SELU functions separately in the generative output layer, they produced easy to read, realistic looking number images, but they were slightly blurry. When I ran the sigmoid function in the generative output layer, the generative ouput layer began to work, but got “stuck” after a few seconds.
+
+### Conclusion
+Since the tahn, ELU, and SELU are able to accept not only positive, but negative numbers as well, it appears that they were all able to create realistic looking numbers clearly. However, the ELU and SELU created slightly blurry numbers which could mean that being zero-centered like the tahn function improves the images better because it aids in the backpropagation process (Nwankpa et al, 2018, p.7) than being non-zero centered like the ELU and SELU functions. The sigmoid function got “stuck” after a few seconds and did not produce any realistic looking numbers at all. This could be that since it does not accept negative numbers the function stopped responding because non-zero centered output is causing the gradient updates to propagate in different  directions (p.5). Also, the sigmoid function has other “drawbacks” including sharp, damp gradients during backpropagation from deeper hidden layers to the input layers, gradient saturation, and slow convergence (p.5).
+
+### References
+
+Chen, F., Chen, N., Mao, H., & Hu, H. (2018). Assessing four neural networks on handwritten 
+digit recognition dataset (MNIST). Chuangxinban Journal of Computing, arXiv:1811.08278
+
+Goodfellow, I.,  Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley,D., Ozair, S., Courville, A.,  
+Bengio, Y. (2014). Generative adversarial networks. arXiv:1406.2661
+
+Harmon & Klubjan (2017). Activation ensembles for neural networks. arXiv:1702.07790v1
+
+Nwankpa, C.E., Ijomah, W., Gachagan, A., and Marshall, S. (2018). Activation functions: 
+Comparison of trends in practice and research for deep learning. arXiv:1811.03378v1 
+
+O’Mahony N. et al. (2020) Deep Learning vs. Traditional Computer Vision. In: Arai K., Kapoor S. 
+(eds) Advances in Computer Vision. CVC 2019. Advances in Intelligent Systems and Computing, vol 943. Springer, Cham
+
+Palvanov, A. & Cho, Y.I. (2018). Comparisons of deep learning algorithms for MNIST in real-time 
+environment. International Journal of Fuzzy Logic and Intelligent Systems, 18, 2.
+
+Radford, A., Metz, L., Shintala, S. (2016). Unsupervised representation learning with deep 
+convolutional generative adversarial networks. arXiv:1511.06434v2 [cs.LG]
+
+Siddique, F.,  Sakib, S., & Siddique, M.A.B. (2019). Recognition of handwritten digit using 
+convolutional neural network in Python with Tensorflow and comparison of performance of hidden layers. 5th Annual Conference of Advances in Electrical Engineering. arXiv:1909.08490
+
+
+ 
